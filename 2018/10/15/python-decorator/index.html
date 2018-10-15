@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="python,decorator," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="###格式：12345def decorater_name(funtion):    def inner_function(*args,**kwargs):        do something        function(*args, **kwarg)    return inner_function ###我的理解装饰器本质上依然是一个函数，从它的格式上也很容易看得出来，用的是def的形">
-<meta name="keywords" content="python">
+<meta name="description" content="适用情况： 我们已经写好了一个函数，代码挺复杂的不方便修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。 或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一遍，那么把新功能写成装饰器，会是一个更好的选择。">
+<meta name="keywords" content="python,decorator">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python_decorator">
+<meta property="og:title" content="我对Python装饰器的理解">
 <meta property="og:url" content="https://anywheretogo.github.io/2018/10/15/python-decorator/index.html">
 <meta property="og:site_name" content="Crescent Rose">
-<meta property="og:description" content="###格式：12345def decorater_name(funtion):    def inner_function(*args,**kwargs):        do something        function(*args, **kwarg)    return inner_function ###我的理解装饰器本质上依然是一个函数，从它的格式上也很容易看得出来，用的是def的形">
+<meta property="og:description" content="适用情况： 我们已经写好了一个函数，代码挺复杂的不方便修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。 或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一遍，那么把新功能写成装饰器，会是一个更好的选择。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-15T13:40:32.091Z">
+<meta property="og:updated_time" content="2018-10-15T14:19:03.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python_decorator">
-<meta name="twitter:description" content="###格式：12345def decorater_name(funtion):    def inner_function(*args,**kwargs):        do something        function(*args, **kwarg)    return inner_function ###我的理解装饰器本质上依然是一个函数，从它的格式上也很容易看得出来，用的是def的形">
+<meta name="twitter:title" content="我对Python装饰器的理解">
+<meta name="twitter:description" content="适用情况： 我们已经写好了一个函数，代码挺复杂的不方便修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。 或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一遍，那么把新功能写成装饰器，会是一个更好的选择。">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Python_decorator | Crescent Rose</title>
+  <title>我对Python装饰器的理解 | Crescent Rose</title>
   
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python_decorator</h1>
+          <h1 class="post-title" itemprop="name headline">我对Python装饰器的理解</h1>
         
 
         <div class="post-meta">
@@ -302,6 +302,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python分享/" itemprop="url" rel="index">
+                    <span itemprop="name">python分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,17 +352,17 @@
       
 
       
-        <p>###格式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorater_name</span><span class="params">(funtion)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_function</span><span class="params">(*args,**kwargs)</span>:</span></span><br><span class="line">        do something</span><br><span class="line">        function(*args, **kwarg)</span><br><span class="line">    <span class="keyword">return</span> inner_function</span><br></pre></td></tr></table></figure></p>
-<p>###我的理解<br>装饰器本质上依然是一个函数，从它的格式上也很容易看得出来，用的是def的形式。只不过它的参数比较特殊，不是文本或数字，而是另一个函数。<br>一般我们的的函数引入的参数是一个数据，经过加工，然后返回另一个结果数据。装饰器也一样，把function这个函数作为参数，然后在内部定义了一个新的函数，并返回这个函数。<br>这个新函数的所做的事情就是，先执行do something，再执行原来的fuction这个函数。也就是，新函数在fuction这个函数的基础上，做了一些额外的事情do something。这里的do something就是你想通过装饰器附加的功能，可以在原函数fuction的前面后面都行。<br>这样达成的效果就是，当把装饰器@decorator加到某函数前面，然后在后文引用某函数时，会先执行do something的，再执某函数原来的功能。</p>
-<p>适用情况：</p>
-<ul>
-<li>我们已经写好了一个函数，代码挺复杂的不好修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。</li>
-<li>或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一刻，那么把新功能写成装饰器，会是一个更好的选择。</li>
+        <h3 id="适用情况："><a href="#适用情况：" class="headerlink" title="适用情况："></a>适用情况：</h3><ul>
+<li>我们已经写好了一个函数，代码挺复杂的不方便修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。</li>
+<li>或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一遍，那么把新功能写成装饰器，会是一个更好的选择。</li>
 </ul>
-<p>###更详细的例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posion</span><span class="params">()</span>:</span> <span class="comment">#获取鼠标当前坐标</span></span><br><span class="line">    get current position x</span><br><span class="line">    <span class="keyword">return</span> x  <span class="comment">#返回坐标x</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x)</span>:</span>  <span class="comment">#移动鼠标到坐为X的点</span></span><br><span class="line">    move to position x</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move_back</span><span class="params">(f)</span>:</span>   <span class="comment">#一个让鼠标执行操作自动返回原位的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        x = position()</span><br><span class="line">        f(*args, **kwargs)</span><br><span class="line">        move(x)</span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line"><span class="meta">@move_back    #通过装饰器让鼠标复原位置</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">click</span><span class="params">(x)</span>:</span> <span class="comment">#让鼠标单击坐标为X的点</span></span><br><span class="line">    click position x</span><br></pre></td></tr></table></figure></p>
-<p>###解释<br>这里装饰器move_back的功能，就是如它内部函数func所展示那样，先记录当前坐标，执行原函数功能，再回去记录的那个坐标位置。正常情况下click函数执行完单击动作后就不管了，添加装饰器后则会在执行完自动回到原来位置。后面再有right_click, drag等其它函数的的话，也同样可以用@move_back装饰。</p>
+<a id="more"></a>
+<h3 id="格式："><a href="#格式：" class="headerlink" title="格式："></a>格式：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator_name</span><span class="params">(funtion)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_function</span><span class="params">(*args,**kwargs)</span>:</span></span><br><span class="line">        do something</span><br><span class="line">        function(*args, **kwarg)</span><br><span class="line">    <span class="keyword">return</span> inner_function</span><br></pre></td></tr></table></figure>
+<h3 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h3><p>装饰器本质上依然是一个函数，从它的格式上也很容易看得出来，用的是def的形式。只不过它的参数比较特殊，不是文本或数字，而是另一个函数。<br>一般我们的的函数引入的参数是一个数据，经过加工，然后返回另一个结果数据。装饰器也一样，把function这个函数作为参数，然后在内部定义了一个新的函数，并返回这个函数。<br>这个新函数的所做的事情就是，先执行do something，再执行原来的fuction这个函数。也就是，新函数在fuction这个函数的基础上，做了一些额外的事情do something。这里的do something就是你想通过装饰器附加的功能，可以在原函数fuction的前面后面都行。<br>这样达成的效果就是，当把装饰器@decorator加到某函数前面，然后在后文引用某函数时，会先执行do something的，再执某函数原来的功能。</p>
+<h3 id="更详细的例子"><a href="#更详细的例子" class="headerlink" title="更详细的例子"></a>更详细的例子</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posion</span><span class="params">()</span>:</span> <span class="comment">#获取鼠标当前坐标</span></span><br><span class="line">    get current position x</span><br><span class="line">    <span class="keyword">return</span> x  <span class="comment">#返回坐标x</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x)</span>:</span>  <span class="comment">#移动鼠标到坐为X的点</span></span><br><span class="line">    move to position x</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move_back</span><span class="params">(f)</span>:</span>   <span class="comment">#一个让鼠标执行操作自动返回原位的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        x = position()</span><br><span class="line">        f(*args, **kwargs)</span><br><span class="line">        move(x)</span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line"><span class="meta">@move_back    #通过装饰器让鼠标复原位置</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">click</span><span class="params">(x)</span>:</span> <span class="comment">#让鼠标单击坐标为X的点</span></span><br><span class="line">    click position x</span><br></pre></td></tr></table></figure>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>这里装饰器move_back的功能，就是如它内部函数func所展示那样，先记录当前坐标，执行原函数功能，再回去记录的那个坐标位置。正常情况下click函数执行完单击动作后就不管了，添加装饰器后则会在执行完自动回到原来位置。后面再有right_click, drag等其它函数的的话，也同样可以用@move_back装饰。</p>
 <hr>
-<p>###总结<br>以下两个方法效果是一样的：</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以下两个方法效果是一样的：</p>
 <ul>
 <li>同时先后调用 position、 click、 move 三个函数</li>
 <li>用move_back去装饰click, 再调用click<br><strong>但是后者在重复使用时会更方便，也更美观，符合python的原则：要简单优雅<s>不要污</s>，我们把重复的代码封装成函数，把重复的函数封装成装饰器，函数的函数。</strong></li>
@@ -352,10 +374,38 @@
     
     
 
+    <div>
+        
+            <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+    </div>
 
     
 
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    guoliang_sz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://anywheretogo.github.io/2018/10/15/python-decorator/" title="我对Python装饰器的理解">https://anywheretogo.github.io/2018/10/15/python-decorator/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -364,6 +414,8 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
+            <a href="/tags/decorator/" rel="tag"># decorator</a>
+          
         </div>
       
 
@@ -371,11 +423,13 @@
       
       
 
+
+
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/15/hello-world/" rel="next" title="Hello World">
+              <a href="/2018/10/14/hello-world/" rel="next" title="Hello World">
                 <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
@@ -435,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -462,13 +525,22 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -507,6 +579,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#适用情况："><span class="nav-number">1.</span> <span class="nav-text">适用情况：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式："><span class="nav-number">2.</span> <span class="nav-text">格式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的理解"><span class="nav-number">3.</span> <span class="nav-text">我的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更详细的例子"><span class="nav-number">4.</span> <span class="nav-text">更详细的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释"><span class="nav-number">5.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

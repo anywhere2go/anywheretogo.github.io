@@ -281,7 +281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/15/python-decorator/" itemprop="url">Python_decorator</a></h1>
+                <a class="post-title-link" href="/2018/10/15/python-decorator/" itemprop="url">我对Python装饰器的理解</a></h1>
         
 
         <div class="post-meta">
@@ -303,6 +303,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python分享/" itemprop="url" rel="index">
+                    <span itemprop="name">python分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -332,30 +354,27 @@
 
       
         
-          
-            <p>###格式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorater_name</span><span class="params">(funtion)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_function</span><span class="params">(*args,**kwargs)</span>:</span></span><br><span class="line">        do something</span><br><span class="line">        function(*args, **kwarg)</span><br><span class="line">    <span class="keyword">return</span> inner_function</span><br></pre></td></tr></table></figure></p>
-<p>###我的理解<br>装饰器本质上依然是一个函数，从它的格式上也很容易看得出来，用的是def的形式。只不过它的参数比较特殊，不是文本或数字，而是另一个函数。<br>一般我们的的函数引入的参数是一个数据，经过加工，然后返回另一个结果数据。装饰器也一样，把function这个函数作为参数，然后在内部定义了一个新的函数，并返回这个函数。<br>这个新函数的所做的事情就是，先执行do something，再执行原来的fuction这个函数。也就是，新函数在fuction这个函数的基础上，做了一些额外的事情do something。这里的do something就是你想通过装饰器附加的功能，可以在原函数fuction的前面后面都行。<br>这样达成的效果就是，当把装饰器@decorator加到某函数前面，然后在后文引用某函数时，会先执行do something的，再执某函数原来的功能。</p>
-<p>适用情况：</p>
-<ul>
-<li>我们已经写好了一个函数，代码挺复杂的不好修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。</li>
-<li>或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一刻，那么把新功能写成装饰器，会是一个更好的选择。</li>
+          <h3 id="适用情况："><a href="#适用情况：" class="headerlink" title="适用情况："></a>适用情况：</h3><ul>
+<li>我们已经写好了一个函数，代码挺复杂的不方便修改，但我们又想给它增加新功能。那么可以使用装饰器，在不修改原函数代码情况下，给它添加新功能。</li>
+<li>或者，我们已经写好了多个函数个，现在想给这些函数都附加上一个相同的新的功能。我们肯定是不想把新功能的代码在每个函数那里都复制粘贴一遍，那么把新功能写成装饰器，会是一个更好的选择。</li>
 </ul>
-<p>###更详细的例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posion</span><span class="params">()</span>:</span> <span class="comment">#获取鼠标当前坐标</span></span><br><span class="line">    get current position x</span><br><span class="line">    <span class="keyword">return</span> x  <span class="comment">#返回坐标x</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x)</span>:</span>  <span class="comment">#移动鼠标到坐为X的点</span></span><br><span class="line">    move to position x</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move_back</span><span class="params">(f)</span>:</span>   <span class="comment">#一个让鼠标执行操作自动返回原位的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        x = position()</span><br><span class="line">        f(*args, **kwargs)</span><br><span class="line">        move(x)</span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line"><span class="meta">@move_back    #通过装饰器让鼠标复原位置</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">click</span><span class="params">(x)</span>:</span> <span class="comment">#让鼠标单击坐标为X的点</span></span><br><span class="line">    click position x</span><br></pre></td></tr></table></figure></p>
-<p>###解释<br>这里装饰器move_back的功能，就是如它内部函数func所展示那样，先记录当前坐标，执行原函数功能，再回去记录的那个坐标位置。正常情况下click函数执行完单击动作后就不管了，添加装饰器后则会在执行完自动回到原来位置。后面再有right_click, drag等其它函数的的话，也同样可以用@move_back装饰。</p>
-<hr>
-<p>###总结<br>以下两个方法效果是一样的：</p>
-<ul>
-<li>同时先后调用 position、 click、 move 三个函数</li>
-<li>用move_back去装饰click, 再调用click<br><strong>但是后者在重复使用时会更方便，也更美观，符合python的原则：要简单优雅<s>不要污</s>，我们把重复的代码封装成函数，把重复的函数封装成装饰器，函数的函数。</strong></li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/15/python-decorator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
     
     
     
+
+    <div>
+        
+    </div>
 
     
 
@@ -367,6 +386,8 @@
       
 
       
+
+
 
       
 
@@ -396,7 +417,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://anywheretogo.github.io/2018/10/15/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://anywheretogo.github.io/2018/10/14/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="guoliang_sz">
@@ -415,7 +436,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/15/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/10/14/hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
@@ -427,8 +448,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T17:27:20+08:00">
-                2018-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-14T13:32:31+08:00">
+                2018-10-14
               </time>
             
 
@@ -466,24 +487,24 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/14/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
     
     
     
+
+    <div>
+        
+    </div>
 
     
 
@@ -495,6 +516,8 @@
       
 
       
+
+
 
       
 
@@ -568,13 +591,22 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
