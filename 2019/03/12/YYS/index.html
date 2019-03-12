@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,排序,桶排序,leetcode," />
+  <meta name="keywords" content="python,阴阳师,辅助工具," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="玩了半天桶子，然后发现还没内置sort快，请允悲。。。">
-<meta name="keywords" content="python,排序,桶排序,leetcode">
+<meta name="description" content="外挂与反外挂，就像爬虫与反爬虫，这是一场永远不会结束的战争。">
+<meta name="keywords" content="python,阴阳师,辅助工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="认识桶排序--Leetcode-164题解">
-<meta property="og:url" content="https://anywheretogo.github.io/2019/03/08/bucket-sort/index.html">
+<meta property="og:title" content="阴阳师手游辅助工具的成形">
+<meta property="og:url" content="https://anywheretogo.github.io/2019/03/12/YYS/index.html">
 <meta property="og:site_name" content="Crescent Rose">
-<meta property="og:description" content="玩了半天桶子，然后发现还没内置sort快，请允悲。。。">
+<meta property="og:description" content="外挂与反外挂，就像爬虫与反爬虫，这是一场永远不会结束的战争。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T06:42:24.691Z">
+<meta property="og:updated_time" content="2019-03-12T15:25:57.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="认识桶排序--Leetcode-164题解">
-<meta name="twitter:description" content="玩了半天桶子，然后发现还没内置sort快，请允悲。。。">
+<meta name="twitter:title" content="阴阳师手游辅助工具的成形">
+<meta name="twitter:description" content="外挂与反外挂，就像爬虫与反爬虫，这是一场永远不会结束的战争。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://anywheretogo.github.io/2019/03/08/bucket-sort/"/>
+  <link rel="canonical" href="https://anywheretogo.github.io/2019/03/12/YYS/"/>
 
 
 
 
 
-  <title>认识桶排序--Leetcode-164题解 | Crescent Rose</title>
+  <title>阴阳师手游辅助工具的成形 | Crescent Rose</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://anywheretogo.github.io/2019/03/08/bucket-sort/">
+    <link itemprop="mainEntityOfPage" href="https://anywheretogo.github.io/2019/03/12/YYS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="guoliang_sz">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">认识桶排序--Leetcode-164题解</h1>
+          <h1 class="post-title" itemprop="name headline">阴阳师手游辅助工具的成形</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T14:23:07+08:00">
-                2019-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T23:22:28+08:00">
+                2019-03-12
               </time>
             
 
@@ -352,28 +352,69 @@
       
 
       
-        <p>玩了半天桶子，然后发现还没内置sort快，请允悲。。。</p>
+        <p>外挂与反外挂，就像爬虫与反爬虫，这是一场永远不会结束的战争。</p>
 <a id="more"></a>
-<hr>
-<p><a href="https://leetcode-cn.com/problems/maximum-gap/" target="_blank" rel="noopener">题目-leetcode-164</a>：</p>
+<p>我最早学习编程的目的，就是想制作一些小工具，为生活工作带便利，比如工作的各种数据、文件自动指处理，生活的游戏脚本之类。在入坑阴阳师之前，我呆的另一个游戏是碧蓝航线，都是集卡加养成的类型，也给航线写过一个脚本，那就是阴阳师辅助的前身。</p>
+<h2 id="外挂-辅助的类型"><a href="#外挂-辅助的类型" class="headerlink" title="外挂/辅助的类型"></a>外挂/辅助的类型</h2><p>从功能和效果上来说，外挂的类型可以分为两种，一种是修改强化型，即是大众认识的外挂，直接强化游戏内的能力，甚至添加游戏原本没有的能力，效果堪称毁天灭地无所不能，例如DNF中曾经出现过的各种秒全图的挂。 另一种是自动挂机型，不会强化或修改游戏能力，只是把原本繁琐的手动给自动进行了，比如说血量低于多少自动吃药自动寻路自动攻击，有的游戏可能本身内部集成了这些自动功能，而有的游戏没有玩家则会利用第三方工具辅助。<br>从运行方式上，也可以分成两种。一种是直接读取修改游戏程序内部数据，还是用DNF做例子，一般是直接从程序内读取数据。 另一种是图像识别判断，控制鼠标进行操作，比如按键精灵上的LOL挂机的一般都是这种。</p>
+<h2 id="最初的思路"><a href="#最初的思路" class="headerlink" title="最初的思路"></a>最初的思路</h2><p>外挂与反外挂的斗争就像爬虫与反爬虫的一样，永远不会完结，拦截成功率与误伤率成正比，所以效果越出众的死得越快，低调一点越接近正常用户则越安全。所以从一开始我做的定位就是自动辅助型，能稳定挂机就知足了。其次因为修改读取游戏数据难度虽然效率高，但是难度与风险都很大，所以选择拟人化的识图型操控。那么大概步骤应该是这样的:</p>
 <blockquote>
-<p>给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。如果数组元素个数小于 2，则返回 0。<br>要求：线性时间复杂度和空间复杂度</p>
-</blockquote>
-<p>第一反应是直接排序，然后遍历找差值。但正常情况下完成一次排序的时间复杂已经大于N了，达到线性时间的要求。没有思路，然后看评论，发现个新名词‘桶排序’，百度之。桶排序的思路是分治，先按大小分成小组。与题目契合度很高，因为可以不需要整个数组彻底排序，分组后比较相邻组就行了。记录如下</p>
-<h2 id="核心思路："><a href="#核心思路：" class="headerlink" title="核心思路："></a>核心思路：</h2><p><strong>大小为N的数组， 把数组总分布区间按大小分成N组（N个桶），每个桶的大小一致。<br>每个数放入对应桶，则最大间隙的两个数一定在相邻的两个非空桶</strong>。</p>
-<p>证明：</p>
 <ol>
-<li>若没有空桶，则刚好一个桶一个数，桶内只有一个数所以不可能在同一桶。</li>
-<li>有的桶不止一个数则相应的一定有空桶，同个桶内数字差值小于桶大小，而空桶左右边的桶差值大于桶大小，也不可能在同桶。 </li>
-<li>因为是按大小分组的，所以相邻数字不可能跨过非空桶，一定在相邻桶。</li>
+<li>在PC运行安卓手机模拟器，运行游戏。</li>
+<li>屏幕截图</li>
+<li>图像识别当前场景</li>
+<li>进行逻辑判断选择操作</li>
+<li>控制键盘鼠标进行模拟操作</li>
+<li>回到第2步继续循环</li>
 </ol>
-<h2 id="具体操作："><a href="#具体操作：" class="headerlink" title="具体操作："></a>具体操作：</h2><ul>
-<li>对应第一次遍历，找出数组的最大、最小值。 则总的区间范围是[minx, maxx], 长度为maxx - minx。 把总区间分成与数组相同大小N，即有N个桶，可以用list[[min, max]]的2维数组表示。</li>
-<li>第二次遍历，把每个数分配到对应的桶，对应桶下标为值val减数组最小值minx，除总区间长度maxx - minx，乘N-1，取整。</li>
-<li>第三次遍历非空的桶，相邻的大桶的min减小桶的max，取其中最大值。</li>
+</blockquote>
+<h2 id="寻找工具"><a href="#寻找工具" class="headerlink" title="寻找工具"></a>寻找工具</h2><p>首先是图像识别，一开始跑错路了跑到机器学习上去了，后来才发现机器学习能干这活，但是杀鸡焉用牛刀，opencv的模式匹配就完全足够了（不过我用机器学习做出了另外一个实用的工作工具， 那就是另外一个故事了）。 然后是模拟键盘鼠标进行操作，一开始是通过win32api调用系统功能，非常之麻烦，后面发现pyaotuogui这个库，把模拟键盘鼠标功能都封闭了，完美契合功能需求。所以核心库就是open CV加pyaotuogui。</p>
+<h2 id="问题与改进"><a href="#问题与改进" class="headerlink" title="问题与改进"></a>问题与改进</h2><blockquote>
+<p>效率：2560 * 1440的大屏幕截下来，每次匹配都要逐行遍历扫描过去，每步操作都是查找好向个目标才能定位当前场景，导致运行速度慢</p>
+</blockquote>
+<ul>
+<li>解决方法：</li>
 </ul>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>假设是要把数组完全排序的话，那么可以把桶内数字分别排序后再合并。突发奇想，现在桶的大小是总区间/N，如果把桶大小缩小到1，不就等于一次全部排完。不过这样则相应需要总区间大小个桶，如果数组分布稀疏范围广则很会消耗空间，分布密集范围小的话应该可以尝试。正常桶排序的理想情况应该是数组分均匀，则分完后每个桶只有一两个数字，内部可以快速排完然后合并桶。</p>
-<h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maximumGap</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        length = len(nums)</span><br><span class="line">        maxx, minx = nums[<span class="number">0</span>], nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length):  <span class="comment">#第1次遍历，找最大最小值</span></span><br><span class="line">            val = nums[i]</span><br><span class="line">            <span class="keyword">if</span> val &gt; maxx:</span><br><span class="line">                maxx = val</span><br><span class="line">            <span class="keyword">elif</span> val &lt; minx:</span><br><span class="line">                minx = val</span><br><span class="line"></span><br><span class="line">        all_range = maxx - minx  <span class="comment">#总的区间范围</span></span><br><span class="line">        <span class="keyword">if</span> all_range &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> all_range</span><br><span class="line"></span><br><span class="line">        cups = [[<span class="keyword">None</span>, <span class="keyword">None</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(length)] <span class="comment">#每个桶的[min, max]</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length):  <span class="comment">#第2次遍历，每个数字分到对应的桶，更新桶的大小值</span></span><br><span class="line">            val = nums[i]</span><br><span class="line">            index = int((val - minx) / all_range * (length - <span class="number">1</span>))</span><br><span class="line">            cup = cups[index]</span><br><span class="line">            <span class="keyword">if</span> cup[<span class="number">0</span>] <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> val &lt; cup[<span class="number">0</span>]:</span><br><span class="line">                cup[<span class="number">0</span>] = val</span><br><span class="line">            <span class="keyword">if</span> cup[<span class="number">1</span>] <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> val &gt; cup[<span class="number">1</span>]:</span><br><span class="line">                cup[<span class="number">1</span>] = val</span><br><span class="line"></span><br><span class="line">        result = <span class="number">0</span></span><br><span class="line">        previous = cups[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, length): <span class="comment">#第3次遍历非空桶，相邻大桶min减小桶的max</span></span><br><span class="line">            <span class="keyword">if</span> cups[i][<span class="number">0</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                result = max(result, cups[i][<span class="number">0</span>] - previous)</span><br><span class="line">                previous = cups[i][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<ol>
+<li>缩小截图范围，因为模拟器只占屏幕一部分，并不需要全屏查找。 </li>
+<li>通过流程预测当前场景，减少查找目标，比如流程A之后则只需要要找A后面的场景，不用再找A前面的场景。<br>总结 </li>
+</ol>
+<ul>
+<li>总结：最开始时我是完全没有算法/优化这一概念，不管什么都是直接暴力跑，反正电脑不会累。后面开始在leetcode刷题有了时间复制度限制，才开始考虑怎么通过优化逻辑减少电脑的无用功。</li>
+</ul>
+<hr>
+<blockquote>
+<p>游戏检测：任何游戏都是禁止第三方工具的，用了没多久就收到GM警告。</p>
+</blockquote>
+<ul>
+<li>思考：游戏检测无非是两个方面，一是通信加密，针对的是读取修改游戏数据类的外挂，通过技术手段发现数据被拦截过，二是行为模式异常，机械操作过于僵硬不像正常用户。我完全没有去过它的数据，所以只可能是行为模式问题了，需要表现得更加拟人一点。</li>
+<li>应对：引入随机函数，一是操作时间随机延迟，避免出现操作间隔完全一样。二是操作位置随机偏移，避免每次都点击都是按钮正中心。</li>
+<li>总结：前期被检测到过，加入时间位置偏移后安全稳定使用至今。其实这个还可以继续优化的，正常人类不可能每次点在正中心，但同时也不可能完全随机的，应该是中心概率比周边概率大一点才对，考虑过再检测到的话就把随机偏移改成概率偏移</li>
+</ul>
+<hr>
+<blockquote>
+<p>占用屏幕：屏幕要在前台操作，挡住窗口则无法截屏功能分析，鼠标功能也被占用，影响电脑正常使用。需要优化成后台操作。</p>
+</blockquote>
+<ul>
+<li>思考：开始时思考方向是模拟器作为一个软件，要在屏幕显示图像，应该会有个图像数据游戏之类的东西，是否可能拦截读取下来代替截屏，但是百度GOOGLE都没搜索到相关资料，似乎不可行，这里卡了很久。</li>
+<li>解决：后来换了个思路，模拟器不止是一个软件，也是一个手机。后台控制特定软件比较困难，但是控制手机有很成熟的方案，ADB连接。把前台截电脑屏、控制电脑鼠标操作换成了后台ADB命令截手机屏，ADB命令控制手机点击。从此可以愉快地一边看电影一边后台挂机。</li>
+</ul>
+<hr>
+<blockquote>
+<p>稳定性问题：原先是电脑截屏后直接保存读取分析，改成ADB后截屏文件在手机，要PULL到电脑来进行分析，偶尔会出现PULL命令拉不到文件失败现象导致程序卡住。</p>
+</blockquote>
+<ul>
+<li>分析：经多次实验后确认不是逻辑或语法问题，大部分时间文件传输是正常的，长时间连续写入覆盖后有小概率失败，多方查找未找到相关资料。</li>
+<li>思考：写入失败概率极小，不影响程序效率，但程序是线性的，这步卡了后面无法继续执行，需要想办法跳过这个错误。 最开始想用try/except来捕捉，然后发现不行，这不是执行出错更像是一个死循环卡在那里，捕捉不到。然后考虑多线程，这条线卡了不影响其它线程，可以在另个线程加个闹钟，多久没执行完强制结束，实现类似time out的功能。</li>
+<li>解决：threading模板有Timer功能，等于是一个多线程闹钟。写了一个带timer的装饰器，附在原操作函数的，给函数添加了time out功能不怕卡死。</li>
+</ul>
+<blockquote>
+<p>其它优化:</p>
+</blockquote>
+<ul>
+<li>交互页面：总不能每次都是打开py文件来修改，又懒得弄GUI，于是做成了命令行交互页面</li>
+<li>错误日志：命令行一出错就直接退出，不像IDE有错误提示不方便DEBUG，于是给原程序加了打印日志的装饰器。</li>
+</ul>
+<h2 id="总结与待优化"><a href="#总结与待优化" class="headerlink" title="总结与待优化"></a>总结与待优化</h2><p>入坑阴阳师大半年了，脚本也一改再改，从被GM查封到稳定安全挂机，从占用电脑到后面挂机，也算是见证了我的python学习之路。现在虽然功能和稳定性都没有问题了，但是命名规范、代码重复方面的细节问题仍然比较多。能用，但是挺丑。等将来哪天有时间和兴趣了再重构优化一遍。<del>也可能永远不会有那天。</del></p>
 
       
     </div>
@@ -404,7 +445,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://anywheretogo.github.io/2019/03/08/bucket-sort/" title="认识桶排序--Leetcode-164题解">https://anywheretogo.github.io/2019/03/08/bucket-sort/</a>
+    <a href="https://anywheretogo.github.io/2019/03/12/YYS/" title="阴阳师手游辅助工具的成形">https://anywheretogo.github.io/2019/03/12/YYS/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -421,11 +462,9 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/排序/" rel="tag"># 排序</a>
+            <a href="/tags/阴阳师/" rel="tag"># 阴阳师</a>
           
-            <a href="/tags/桶排序/" rel="tag"># 桶排序</a>
-          
-            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            <a href="/tags/辅助工具/" rel="tag"># 辅助工具</a>
           
         </div>
       
@@ -440,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/01/duck-duck/" rel="next" title="神秘鸳鸯惊现纽约中央公园">
-                <i class="fa fa-chevron-left"></i> 神秘鸳鸯惊现纽约中央公园
+              <a href="/2019/03/08/bucket-sort/" rel="next" title="认识桶排序--Leetcode-164题解">
+                <i class="fa fa-chevron-left"></i> 认识桶排序--Leetcode-164题解
               </a>
             
           </div>
@@ -449,10 +488,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/12/YYS/" rel="prev" title="阴阳师手游辅助工具的成形">
-                阴阳师手游辅助工具的成形 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心思路："><span class="nav-number">1.</span> <span class="nav-text">核心思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体操作："><span class="nav-number">2.</span> <span class="nav-text">具体操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">3.</span> <span class="nav-text">总结：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">4.</span> <span class="nav-text">代码示例：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#外挂-辅助的类型"><span class="nav-number">1.</span> <span class="nav-text">外挂/辅助的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最初的思路"><span class="nav-number">2.</span> <span class="nav-text">最初的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找工具"><span class="nav-number">3.</span> <span class="nav-text">寻找工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题与改进"><span class="nav-number">4.</span> <span class="nav-text">问题与改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结与待优化"><span class="nav-number">5.</span> <span class="nav-text">总结与待优化</span></a></li></ol></div>
             
 
           </div>
